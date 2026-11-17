@@ -9,12 +9,11 @@ import adsk.fusion
 _HERE = os.path.dirname(os.path.abspath(__file__))
 if _HERE not in sys.path:
     sys.path.insert(0, _HERE)
-from sr_fusion_common import settings  # noqa: E402
+from sr_fusion_common import settings, panels  # noqa: E402
 from . import export_core as core  # noqa: E402
 from . import export_ops as ops  # noqa: E402
 
 CMD_ID = 'srExportCmd'
-PANEL_IDS = ['SolidScriptsAddinsPanel', 'SolidMakePanel']
 SETTINGS = 'export'
 _handlers = []
 
@@ -110,24 +109,13 @@ def run(context):
         h = _Created()
         cd.commandCreated.add(h)
         _handlers.append(h)
-        for pid in PANEL_IDS:
-            panel = ui.allToolbarPanels.itemById(pid)
-            if panel:
-                ctl = panel.controls.addCommand(cd)
-                # Default pin only, set once on the new control; never isPromoted, so Fusion keeps the
-                # user's own pin/unpin choice across restarts.
-                ctl.isPromotedByDefault = pid == 'SolidScriptsAddinsPanel'
+        panels.add_command(ui, cd, CMD_ID)
     except Exception:
         _ui().messageBox('SR Export run failed:\n' + traceback.format_exc())
 
 
 def _remove_ui(ui):
-    for pid in PANEL_IDS:
-        panel = ui.allToolbarPanels.itemById(pid)
-        ctl = panel.controls.itemById(CMD_ID) if panel else None
-        while ctl:
-            ctl.deleteMe()
-            ctl = panel.controls.itemById(CMD_ID)
+    panels.remove_command(ui, CMD_ID)
     cd = ui.commandDefinitions.itemById(CMD_ID)
     if cd:
         cd.deleteMe()
