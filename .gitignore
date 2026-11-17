@@ -29,7 +29,7 @@ MANIFEST
 # PyInstaller
 # Usually these files are written by a python script from a template
 # before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
+# Do not ignore *.manifest: Fusion add-ins and scripts use that extension.
 *.spec
 
 # Installer logs
@@ -221,3 +221,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Fusion / CAD artifacts (this repo is public; keep vendor CAD out)
+*.step
+*.stp
+*.f3d
+*.sldprt
+*.iges
+*.igs
+*.x_t
+*.sat

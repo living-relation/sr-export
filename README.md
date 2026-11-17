@@ -1,29 +1,37 @@
 # SR Export
 
-A Spark Robotic Fusion add-in for one-click multi-format export.
+A Spark Robotic Fusion add-in that exports STEP, F3D, STL, 3MF, IGES, SAT and DXF in one click, to a
+folder you pick, overwriting in place.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## Features
 
-- One-click export of the active Fusion design.
-- Write more than one output format in a single run.
-
-The supported formats, output options, and command layout are to be completed when the code lands.
+- **Toolbar button** "SR Export" on several Design-workspace panels: **SR Tools**, Add-Ins, Make, and Insert. The panel list is configurable in `%APPDATA%/SRExport/panels.json`.
+- A checkbox per file type. Pick a folder once; it is remembered.
+- Files are named after the design (Fusion's ` v12` suffix dropped), so each export **overwrites in place**.
+- Optional: pick one component to export just that. DXF needs a selected sketch or flat face.
+- IGES and SAT may be blocked on a non-commercial Fusion plan; the result list says so if they are.
 
 ## Requirements
 
 - Autodesk Fusion
 
-Other dependencies, if any, are to be completed when the code lands.
-
 ## Install
 
-Add this repository from Fusion's **Scripts and Add-Ins** dialog. Use the **Add-Ins** tab and add the add-in from a folder. See [docs/install.md](docs/install.md) for the full steps.
+1. Clone this repo and keep the folder on disk.
+2. In Fusion: **Utilities > Add-ins > Scripts and Add-ins > Add-ins tab > + (green plus)**, and pick the `SRExport` folder inside the clone. Tick **Run on Startup** and click **Run**.
+
+   Or copy or link the `SRExport` folder into `%APPDATA%\Autodesk\Autodesk Fusion 360\API\AddIns\` and restart Fusion.
+3. The button shows up on the **SR Tools** tab and in the Add-Ins, Make, and Insert panels.
+
+Settings (last folder and checked types) are saved in `%APPDATA%\SRExport\`.
+
+See [docs/install.md](docs/install.md) for the full steps, including uninstall.
 
 ## Usage
 
-Once the add-in is installed and running in Fusion, use it from the Fusion interface to export the active design in multiple formats in one click. Command names, options, and outputs are to be completed when the code lands. See [docs/usage.md](docs/usage.md).
+Open a design, click **SR Export**, tick the formats you want, and confirm the folder. See [docs/usage.md](docs/usage.md).
 
 ## Documentation
 
@@ -33,9 +41,17 @@ Once the add-in is installed and running in Fusion, use it from the Fusion inter
 - [Development](docs/development.md)
 - [Documentation index](docs/README.md)
 
+## Development
+
+```
+python tools/check.py
+```
+
+CI runs the same check. `dev/fusion_smoke.py` is a live test that runs inside Fusion. See [docs/development.md](docs/development.md).
+
 ## Contributing
 
-This repository is just getting started. The add-in code will be added in a later pull request. When you change docs or code, please open a PR against `main`. See [docs/development.md](docs/development.md).
+Work on a branch and open a pull request against `main`. Update `docs/` when behavior changes. See [docs/development.md](docs/development.md) and [AGENTS.md](AGENTS.md).
 
 ## License
 
