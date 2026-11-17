@@ -7,7 +7,7 @@
 
 ## Run
 
-Click **SR Export** on the **SR Tools** tab, or in the Design workspace Add-Ins, Make, or Insert panel.
+Click **SR Export** on the **SR Tools** panel (on the SOLID tab), or in the Design workspace Add-Ins, Make, or Insert panel.
 
 - **File name:** defaults to the design name, with Fusion's version suffix stripped. You can edit it.
 - **Folder:** the last folder is remembered. Use **Choose folder...** to pick another.

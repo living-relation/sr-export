@@ -7,7 +7,7 @@ folder you pick, overwriting in place.
 
 ## Features
 
-- **Toolbar button** "SR Export" on several Design-workspace panels: **SR Tools**, Add-Ins, Make, and Insert. The panel list is configurable in `%APPDATA%/SRExport/panels.json`.
+- **Toolbar button** "SR Export" on several Design-workspace panels, including the **SR Tools** panel on the SOLID tab, plus Add-Ins, Make, and Insert. The panel list is configurable in `%APPDATA%/SRExport/panels.json`.
 - A checkbox per file type. Pick a folder once; it is remembered.
 - Files are named after the design (Fusion's ` v12` suffix dropped), so each export **overwrites in place**.
 - Optional: pick one component to export just that. DXF needs a selected sketch or flat face.
@@ -23,7 +23,7 @@ folder you pick, overwriting in place.
 2. In Fusion: **Utilities > Add-ins > Scripts and Add-ins > Add-ins tab > + (green plus)**, and pick the `SRExport` folder inside the clone. Tick **Run on Startup** and click **Run**.
 
    Or copy or link the `SRExport` folder into `%APPDATA%\Autodesk\Autodesk Fusion 360\API\AddIns\` and restart Fusion.
-3. The button shows up on the **SR Tools** tab and in the Add-Ins, Make, and Insert panels.
+3. The button shows up on the **SR Tools** panel on the SOLID tab, and in the Add-Ins, Make, and Insert panels.
 
 Settings (last folder and checked types) are saved in `%APPDATA%\SRExport\`.
 

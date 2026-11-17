@@ -8,7 +8,7 @@ It is part of the Spark Robotic (SR-) tool set for Fusion.
 
 ## Features
 
-- A toolbar button named **SR Export** in the Design workspace, Solid tab, SR Tools, Add-Ins, Make, and Insert panels.
+- A toolbar button named **SR Export** on the **SR Tools** panel on the SOLID tab, and on the Add-Ins, Make, and Insert panels, in the Design workspace.
 - Formats: STEP, Fusion archive (F3D), STL, 3MF, IGES, SAT, and DXF of a selected sketch or flat face.
 - File names use the design name with Fusion's ` v12` version suffix stripped, so a later export replaces the previous files.
 - Optional component selection to export just that component.
