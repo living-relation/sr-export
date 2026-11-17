@@ -1,29 +1,28 @@
 # Overview
 
-SR Export is a Spark Robotic add-in for Autodesk Fusion. It exports the active design in multiple formats in one click.
+SR Export is a Spark Robotic add-in for Autodesk Fusion. It exports the active design (or one
+selected component) to a folder you pick, in the formats you tick, overwriting files of the same
+name in place.
 
 It is part of the Spark Robotic (SR-) tool set for Fusion.
 
-## What this repository is today
-
-This repository currently holds documentation, a license, and a Python `.gitignore`. The add-in code has not been added yet. Feature-specific behavior in these docs is marked as to be completed when the code lands.
-
 ## Features
 
-- One-click export of the active Fusion design.
-- Write more than one output format in a single run.
+- A toolbar button named **SR Export** in the Design workspace, Solid tab, Add-Ins panel.
+- Formats: STEP, Fusion archive (F3D), STL, 3MF, IGES, SAT, and DXF of a selected sketch or flat face.
+- File names use the design name with Fusion's ` v12` version suffix stripped, so a later export replaces the previous files.
+- Optional component selection to export just that component.
+- The last folder and checked types are remembered.
 
-The supported formats, output options, and command layout are to be completed when the code lands.
+IGES and SAT may be blocked on a non-commercial Fusion plan. The result list says so if they are.
 
 ## Requirements
 
 - Autodesk Fusion
 
-No other requirements are documented yet. Runtime dependencies, if any, are to be completed when the code lands.
+## Settings
 
-## Status
-
-The add-in will be added in a follow-up pull request. Until then, treat this repository as the public home and documentation for **SR Export**.
+The last folder, checked types, and last file name are saved in `%APPDATA%\SRExport\`.
 
 ## Further reading
 
