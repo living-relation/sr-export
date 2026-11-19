@@ -9,3 +9,4 @@
 - Do not write assembly instructions such as tightening torque or threadlocker notes.
 - Live Fusion tests: take the machine's Fusion lock first, and never touch other people's open documents.
   The smoke test closes its own design without saving.
+- This is the only agent rules file in the repo. Do not add a CLAUDE.md or any other agent file; put rules here.
