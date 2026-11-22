@@ -3,8 +3,8 @@
   "type": "addin",
   "id": "de63839c-e028-4cd6-8360-bf7d41f2789c",
   "author": "Spark Robotic",
-  "description": {"": "SR Export: export STEP, F3D, STL, 3MF, IGES, SAT and DXF in one click, to a folder you pick, overwriting in place."},
-  "version": "1.0.0",
+  "description": {"": "SR Export: export STEP, F3D, STL, 3MF, IGES, SAT and DXF in one click, to a folder you pick, overwriting in place, with a BOM JSON next to each STEP."},
+  "version": "1.1.0",
   "runOnStartup": true,
   "supportedOS": "windows|mac",
   "editEnabled": true

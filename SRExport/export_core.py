@@ -19,7 +19,9 @@ FORMATS = [
 ]
 FORMAT_KEYS = [k for k, _, _ in FORMATS]
 EXT = {k: e for k, _, e in FORMATS}
-DEFAULTS = {'folder': '', 'checked': ['step', 'f3d'], 'base_name': ''}
+DEFAULTS = {'folder': '', 'checked': ['step', 'f3d'], 'base_name': '', 'sidecar': True, 'thumbnails': False}
+# Extra result rows that are not file types of their own. 'bom_json' is the sidecar written next to the STEP.
+EXTRA_RESULTS = [('bom_json', 'BOM JSON')]
 
 def target_paths(folder, base, keys):
     """Ordered {key: full path}. Same name every time, so exports overwrite in place."""
@@ -39,4 +41,9 @@ def summarize(results):
             continue
         ok, msg = results[k]
         lines.append(('OK      ' if ok else 'FAILED  ') + k.upper() + ': ' + msg)
+        if k == 'step':
+            for xk, label in EXTRA_RESULTS:
+                if xk in results:
+                    xok, xmsg = results[xk]
+                    lines.append(('OK      ' if xok else 'FAILED  ') + label + ': ' + xmsg)
     return '\n'.join(lines) if lines else 'Nothing selected.'

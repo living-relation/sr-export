@@ -4,6 +4,7 @@ import adsk.core
 import adsk.fusion
 
 from . import export_core as core
+from . import sidecar_ops
 
 
 def _plan_msg(e):
@@ -34,8 +35,11 @@ def dxf_from(entity, path):
         tmp.deleteMe()
 
 
-def export(design, keys, folder, base, comp=None, occ=None, dxf_entity=None):
-    """Export the chosen formats. comp/occ default to the root. Returns {key: (ok, path_or_error)}."""
+def export(design, keys, folder, base, comp=None, occ=None, dxf_entity=None, sidecar=True, thumbnails=False):
+    """Export the chosen formats. comp/occ default to the root. Returns {key: (ok, path_or_error)}.
+
+    When STEP succeeds and sidecar is on, <base>.bom.json (BOM + model data, docs/sidecar-schema.md) is
+    written next to it and reported as 'bom_json'. A sidecar failure never fails the STEP itself."""
     em = design.exportManager
     comp = comp or design.rootComponent
     mesh_target = occ or comp
@@ -65,4 +69,9 @@ def export(design, keys, folder, base, comp=None, occ=None, dxf_entity=None):
             results[k] = (bool(ok) and os.path.exists(p), p if ok else 'export returned False')
         except Exception as e:  # report every failure, never stop the batch
             results[k] = (False, _plan_msg(e))
+        if k == 'step' and sidecar and results[k][0]:
+            try:
+                results['bom_json'] = (True, sidecar_ops.write_sidecar(design, p, comp, occ, thumbnails))
+            except Exception as e:
+                results['bom_json'] = (False, _plan_msg(e))
     return results

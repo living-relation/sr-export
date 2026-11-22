@@ -79,3 +79,9 @@ def test_pin_not_forced_each_start():
     blob = chr(10).join(texts)
     assert 'isPromotedByDefault' in blob
     assert 'isPromoted =' not in blob.replace('isPromotedByDefault', '')
+
+
+def test_summarize_lists_bom_json_right_after_step():
+    txt = export_core.summarize({'stl': (True, 'x.stl'), 'step': (True, 'x.step'), 'bom_json': (True, 'x.bom.json')})
+    assert txt.splitlines() == ['OK      STEP: x.step', 'OK      BOM JSON: x.bom.json', 'OK      STL: x.stl']
+    assert export_core.DEFAULTS['sidecar'] is True and export_core.DEFAULTS['thumbnails'] is False
