@@ -14,6 +14,8 @@ Click **SR Export** on the **SR Tools** panel (on the SOLID tab), or in the Desi
 - **File types:** tick any of STEP, F3D, STL, 3MF, IGES, SAT, and DXF.
 - **Component (optional):** leave empty to export the whole design, or pick one occurrence to export just that component.
 - **DXF source:** required only when DXF is ticked. Pick a sketch or a flat face.
+- **BOM JSON next to STEP:** on by default. Writes `<name>.bom.json` beside the STEP with the BOM (quantities, part number, description, material), mass properties, hole and thread data (tap drill from Fusion's thread tables), and the source document. See [BOM sidecar JSON](sidecar-schema.md).
+- **Part thumbnails:** off by default. Saves a small PNG per part into `<name>.thumbs/` for the BOM. It isolates each part briefly, then restores the view.
 
 If no design is open, the add-in asks you to open one first. If you tick DXF and do not pick a sketch or face, that format is reported as failed and the others still run.
 
@@ -23,5 +25,6 @@ A result list reports OK or FAILED for each format, including the path or the er
 
 ## Limits and known issues
 
+- The BOM JSON lists only Fusion Hole features; holes made by extrude cuts or patterns are not in it. See the limits in [BOM sidecar JSON](sidecar-schema.md#limits).
 - DXF needs a selected sketch or planar face. A non-flat face is rejected.
 - IGES and SAT can be blocked by the Fusion plan. The add-in still offers them and reports the block instead of stopping the rest of the batch.

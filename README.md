@@ -27,6 +27,7 @@ Replace `<path-to-this-clone>` with this repo's clone path on that PC. The activ
 - A checkbox per file type. Pick a folder once; it is remembered.
 - Files are named after the design (Fusion's ` v12` suffix dropped), so each export **overwrites in place**.
 - Optional: pick one component to export just that. DXF needs a selected sketch or flat face.
+- Every STEP gets a `<name>.bom.json` beside it with the BOM, mass properties, hole and thread data, and the source document, for the drawing sheet editor. See [docs/sidecar-schema.md](docs/sidecar-schema.md).
 - IGES and SAT may be blocked on a non-commercial Fusion plan; the result list says so if they are.
 
 ## Requirements
@@ -81,6 +82,7 @@ Open a design, click **SR Export**, tick the formats you want, and confirm the f
 - [Overview](docs/overview.md)
 - [Install](docs/install.md)
 - [Usage](docs/usage.md)
+- [BOM sidecar JSON](docs/sidecar-schema.md)
 - [Development](docs/development.md)
 - [Documentation index](docs/README.md)
 

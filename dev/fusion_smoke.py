@@ -47,6 +47,7 @@ def main():
         res['export_all'] = {k: v[0] for k, v in r1.items()}
         res['export_errors'] = {k: v[1] for k, v in r1.items() if not v[0]}
         res['export_component'] = {k: v[0] for k, v in r2.items()}
+        res['bom_json'] = r1.get('bom_json')
         res['overwrite_same_path'] = r3['step'][1] == r1['step'][1] and r3['step'][0]
         ui = app.userInterface
         emain.run(None)

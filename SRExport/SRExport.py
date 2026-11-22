@@ -38,6 +38,9 @@ class _Created(adsk.core.CommandCreatedEventHandler):
             grp = inputs.addGroupCommandInput('types', 'File types').children
             for k, label, _ in core.FORMATS:
                 grp.addBoolValueInput('t_' + k, label, True, '', k in s.get('checked', []))
+            inputs.addBoolValueInput('sidecar', 'BOM JSON next to STEP', True, '', bool(s.get('sidecar', True)))
+            inputs.addBoolValueInput('thumbs', 'Part thumbnails (isolates each part briefly)', True, '',
+                                     bool(s.get('thumbnails', False)))
             sel = inputs.addSelectionInput('target', 'Component (optional)', 'Leave empty to export the whole design')
             sel.addSelectionFilter('Occurrences')
             sel.setSelectionLimits(0, 1)
@@ -93,8 +96,11 @@ class _Execute(adsk.core.CommandEventHandler):
                 comp = occ.component
             d = inputs.itemById('dxfsrc')
             dxf_ent = d.selection(0).entity if d.selectionCount else None
-            res = ops.export(design, keys, folder, base, comp, occ, dxf_ent)
-            settings.save(SETTINGS, {'folder': folder, 'checked': keys, 'base_name': ''})
+            side = inputs.itemById('sidecar').value
+            thumbs = inputs.itemById('thumbs').value
+            res = ops.export(design, keys, folder, base, comp, occ, dxf_ent, sidecar=side, thumbnails=thumbs)
+            settings.save(SETTINGS, {'folder': folder, 'checked': keys, 'base_name': '', 'sidecar': side,
+                                     'thumbnails': thumbs})
             _ui().messageBox(core.summarize(res), 'SR Export')
         except Exception:
             _ui().messageBox('SR Export failed:\n' + traceback.format_exc())

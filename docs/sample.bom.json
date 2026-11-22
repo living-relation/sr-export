@@ -1,0 +1,208 @@
+{
+ "schema": "sr-bom-sidecar",
+ "schema_version": 1,
+ "generator": {
+  "tool": "SR Export",
+  "version": "1.1.0"
+ },
+ "exported_at": "2026-11-22T13:58:41-05:00",
+ "step_file": "Box.step",
+ "source": {
+  "document_name": "Box v15",
+  "design_name": "Box",
+  "version": 15,
+  "latest_version": 15,
+  "data_file_name": "Box",
+  "data_file_id": "urn:adsk.wipprod:dm.lineage:EXAMPLE",
+  "folder": "enclosures",
+  "project": "custom-pdm",
+  "hub": "hub-a",
+  "saved": true,
+  "unsaved_changes": false,
+  "design_units": "mm"
+ },
+ "units": {
+  "length": "mm",
+  "area": "mm2",
+  "volume": "mm3",
+  "mass": "kg",
+  "density": "kg/mm3",
+  "angle": "deg"
+ },
+ "scope": {
+  "component": "Box",
+  "is_root": true,
+  "selected_occurrence": null
+ },
+ "totals": {
+  "mass_kg": 0.204,
+  "volume_mm3": 74400.0,
+  "area_mm2": 100.0,
+  "density_kg_mm3": 2.7e-06,
+  "center_of_mass_mm": [
+   50.0,
+   20.0,
+   3.1
+  ],
+  "accuracy": "high"
+ },
+ "assembly_thumbnail": "Box.thumbs/_assembly.png",
+ "components": [
+  {
+   "id": "plate-id",
+   "name": "Plate",
+   "part_number": "CPDM-1",
+   "description": "base plate",
+   "material": "Aluminum 6061",
+   "quantity": 1,
+   "is_linked": false,
+   "linked_source": null,
+   "is_assembly": false,
+   "body_count": 2,
+   "body_materials": [
+    "Aluminum 6061",
+    "Steel"
+   ],
+   "occurrences": [
+    "Plate:1"
+   ],
+   "physical": {
+    "mass_kg": 0.2,
+    "volume_mm3": 74000.0,
+    "area_mm2": 100.0,
+    "density_kg_mm3": 2.7e-06,
+    "center_of_mass_mm": [
+     50.0,
+     20.0,
+     3.0
+    ],
+    "accuracy": "high"
+   },
+   "thumbnail": "Box.thumbs/plate-id.png",
+   "item": 1,
+   "hole_ids": [
+    "1-H1",
+    "1-H2"
+   ]
+  },
+  {
+   "id": "screw-id",
+   "name": "SHCS M4x10",
+   "part_number": "91290A140",
+   "description": "",
+   "material": "",
+   "quantity": 2,
+   "is_linked": true,
+   "linked_source": {
+    "document": "91290A140",
+    "version": 2
+   },
+   "is_assembly": false,
+   "body_count": 1,
+   "body_materials": [],
+   "occurrences": [
+    "SHCS M4x10:1",
+    "SHCS M4x10:2"
+   ],
+   "physical": {
+    "mass_kg": 0.002,
+    "volume_mm3": 200.0,
+    "area_mm2": 100.0,
+    "density_kg_mm3": 2.7e-06,
+    "center_of_mass_mm": [
+     0.0,
+     0.0,
+     5.0
+    ],
+    "accuracy": "high"
+   },
+   "thumbnail": null,
+   "item": 2,
+   "hole_ids": []
+  }
+ ],
+ "holes": [
+  {
+   "id": "1-H1",
+   "component_id": "plate-id",
+   "component_name": "Plate",
+   "feature_name": "Hole1",
+   "type": "simple",
+   "tap_type": "tapped",
+   "instances": 4,
+   "diameter_mm": 3.3,
+   "depth": {
+    "kind": "distance",
+    "value_mm": 12.0
+   },
+   "tip_angle_deg": 120.0,
+   "counterbore": null,
+   "countersink": null,
+   "clearance": null,
+   "thread": {
+    "type": "ISO Metric profile",
+    "designation": "M4x0.7",
+    "class": "6H",
+    "size": "4.0",
+    "right_handed": true,
+    "tapered": false,
+    "major_diameter_mm": 4.0,
+    "pitch_diameter_mm": 3.545,
+    "minor_diameter_mm": 3.242,
+    "full_length": false,
+    "thread_length_mm": 10.0,
+    "tap_drill": {
+     "diameter_mm": 3.3,
+     "diameter_native": 3.3,
+     "unit": "mm",
+     "source": "fusion_thread_table",
+     "table_file": "ISOMetricprofile.xml",
+     "note": ""
+    }
+   },
+   "callout": "4X Ø3.3 ↧12\nM4x0.7 - 6H ↧10"
+  },
+  {
+   "id": "1-H2",
+   "component_id": "plate-id",
+   "component_name": "Plate",
+   "feature_name": "Hole2",
+   "type": "counterbore",
+   "tap_type": "simple",
+   "instances": 1,
+   "diameter_mm": 4.5,
+   "depth": {
+    "kind": "through_all",
+    "value_mm": null
+   },
+   "tip_angle_deg": 120.0,
+   "counterbore": {
+    "diameter_mm": 8.0,
+    "depth_mm": 4.4
+   },
+   "countersink": null,
+   "clearance": null,
+   "thread": null,
+   "callout": "Ø4.5 THRU\n⌴Ø8 ↧4.4"
+  }
+ ],
+ "hole_groups": [
+  {
+   "component_id": "plate-id",
+   "callout": "Ø3.3 ↧12\nM4x0.7 - 6H ↧10",
+   "count": 4,
+   "hole_ids": [
+    "1-H1"
+   ]
+  },
+  {
+   "component_id": "plate-id",
+   "callout": "Ø4.5 THRU\n⌴Ø8 ↧4.4",
+   "count": 1,
+   "hole_ids": [
+    "1-H2"
+   ]
+  }
+ ],
+ "warnings": []
+}

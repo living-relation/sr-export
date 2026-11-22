@@ -15,7 +15,10 @@ Load the `SRExport` folder into Fusion as described in [Install](install.md).
 - `SRExport/` — the Fusion add-in (junction this folder into AddIns). Entry point: `SRExport.py` and `SRExport.manifest`.
 - `SRExport/sr_fusion_common/` — settings and file-name helpers, vendored so the add-in stands alone.
 - `SRExport/export_core.py` — pure path and summary helpers (no Fusion import); unit-tested.
-- `SRExport/export_ops.py` — Fusion-side export calls.
+- `SRExport/export_ops.py` — Fusion-side export calls. After a STEP succeeds it writes the BOM sidecar.
+- `SRExport/sidecar_core.py` — pure sidecar helpers: schema, unit conversion, thread-table parsing and tap-drill lookup, hole callouts (no Fusion import); unit-tested.
+- `SRExport/sidecar_ops.py` — reads the design for the sidecar (components, mass properties, holes, thumbnails). Tested against a small fake `adsk` in `tests/test_sidecar.py`.
+- `docs/sample.bom.json` — example sidecar, generated from the test fixture.
 - `tests/` — unit tests that do not need Fusion.
 - `dev/fusion_smoke.py` — live test that runs inside Fusion.
 - `tools/check.py` — secret/path scan plus pytest. CI runs the same command.
